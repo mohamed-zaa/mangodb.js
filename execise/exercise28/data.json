@@ -1,0 +1,17 @@
+
+
+{
+
+"id":1,
+"name": "ali",
+"city":"muqdisho",
+"orders": [
+
+{"id":5,"product":"laptop","qua":1},
+{"id":5,"product":"laptop","qua":1},
+
+
+]
+
+
+}
