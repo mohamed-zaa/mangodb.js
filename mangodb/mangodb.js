@@ -1,48 +1,49 @@
-use dugsiiye
-
-db.createCollection("students")
-
+  // 1 
+  db.students.find({ age: { $gt: 22 } })
 
 
-db.students.insertMany([
-  {
-    name: "Mohamed",
-    age: 22,
-    email: "mohamed@gmail.com",
-    courses: ["JavaScript", "React", "Node.js"]
-  },
-  {
-    name: "Ali",
-    age: 21,
-    email: "ali@gmail.com",
-    courses: ["HTML", "CSS", "JavaScript"]
-  },
-  {
-    name: "Ahmed",
-    age: 23,
-    email: "ahmed@gmail.com",
-    courses: ["MongoDB", "React", "Python"]
-  }
-])
 
 
-db.students.find()
+  // 2 
+  db.students.find({ courses: "React" })
 
-db.students.updateOne(
-  { name: "Mohamed" },
-  { $set: { email: "mohamed123@gmail.com" } }
-)
-db.students.deleteOne({ name: "Ali" })
 
-db.students.insertOne({
-  name: "Hassan",
-  age: 24,
-  email: "hassan@gmail.com",
-  courses: ["JavaScript", "MongoDB"],
-  address: {
-    city: "Garowe",
-    country: "Somalia"
-  }
+  // 3
+  db.students.find({ name: { $regex: /^S/ } })
+
+
+
+  // 4
+  db.students.find({ age: { $in: [18, 21] } })
+
+
+
+
+  // 5
+  db.students.find({
+  email: { $not: /@gmail\.com$/ }
 })
 
-db.students.find()
+// 6
+db.students.find({
+  courses: "React",
+  age: { $gt: 20 }
+})
+
+
+// 7
+db.students.find({
+  $or: [
+    { courses: "React" },
+    { courses: "Node.js" }
+  ]
+})
+
+
+// 8 
+db.students.find({
+  $or: [
+    { name: { $regex: "x" } },
+    { email: { $regex: /\.edu$/ } }
+  ]
+})
